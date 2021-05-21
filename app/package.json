@@ -8,7 +8,8 @@
     "npm": "5.5.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "NODE_ENV=production node index.js",
+    "test": "NODE_ENV=test mocha ../test"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -43,5 +44,8 @@
     "promised-mongo": "^1.2.0",
     "static-favicon": "^1.0.2",
     "transparency": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.4.0"
   }
 }
