@@ -1,4 +1,4 @@
 # Розділ документації
 
-В цьому файлі необхідно перелічити всі документи, розроблені в проекті та дати посилання на них.
+Переглянути титульний лист та анотацію можливо тут [Click here](https://docs.google.com/document/d/181G6BsuzsxVDgJKRIjY62VFmahld65muAtYCBlllrrs/edit?usp=sharing)
 
