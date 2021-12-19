@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AllSafe Profile</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">       
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+    <link rel="stylesheet" media="screen" href="assets/fonts/font-awesome/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
+    <link rel="stylesheet" type="text/css" href="assets/extras/lightbox.css">
+
+    <link rel="icon" 
+    type="image/png" 
+    href="favicon.ico">
+
+    <script src="assets/js/jquery-min.js"></script>
+
+  </head>
+
+<body data-spy="scroll" data-offset="20" data-target="#navbar">
+
+<!-- Hero Area Section End-->
+
+
+
+
+<!-- Portfolio Section -->
+<section id="data">
+    <hr>
+    <form action="/users" method="GET">
+     
+      <input type="text" name="search" placeholder="username" value="<%= prevSearch %>">
+      <p class ="addP"><button type="submit" class="btn btn-success buttonbar1">Search</button></p>
+    
+    </form>
+
+    <h2 class="subtitle">Page <%= page %> </h2>
+    
+<ul class="list-group">
+
+<% if (max !== 0) { %>
+<% for (let [i,user] of usr.entries()) { %>
+    
+<li class="list-group-item"> 
+        
+
+    <%= user.username %> :  <%= user.email %> 
+    <span class="badge"> <%= user.role %> </span>    
+    
+    <% if (user.role === 'user') { %>
+    <form method="POST" action="/promote/<%= user._id %>">
+      <span class="">
+              <button type="submit" class="btn btn-warning butP">Promote</button>
+          </span>
+  </form>
+    <% } %>
+
+</li>
+<% } %>
+<% } else {%>
+  <h1>NOT FOUND GO AWAY!!!</h1>
+  <% } %>
+</ul>
+
+<% if(page !== max-1) { %>
+<form method="GET" action="/users">
+    <input type="hidden" name="search" value="<%= prevSearch %>">  
+    <input type="hidden" name="page" value="<%= page + 1 %>">
+    <button type="submit" class="btn btn-danger buttonbar1">Forward</button> 
+  </form>
+<% } %>
+
+<% if(page !== 0 ) { %>
+  <form method="GET" action="/users">
+    <input type="hidden" name="search" value="<%= prevSearch %>">  
+    <input type="hidden" name="page" value="<%= page - 1 %>">
+    <button type="submit" class="btn btn-danger buttonbar1">Back</button> 
+  </form>
+<% } %>
+<form method="GET" action="/profile">
+    <button type="submit" class="btn btn-primary buttonbar1">Back to profile</button> 
+  </form>
+
+<hr>
+</section>
+
+
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+        <!-- Smooth Scroll -->
+                <!-- Smooth Scroll -->
+    <script src="assets/js/smooth-scroll.js"></script>
+    <script src="assets/js/lightbox.min.js"></script>
+
+    <!-- All JS plugin Triggers -->
+    <script src="assets/js/main.js"></script>
+
+
+
+</body>
+</html>
